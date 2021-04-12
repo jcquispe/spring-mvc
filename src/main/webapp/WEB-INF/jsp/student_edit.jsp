@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>New Student</title>
+        <title>Edit Student</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </head>
     <body>
@@ -23,12 +23,16 @@
         <div class="container">
             <div class="row">
                 <div class="col s6 offset-s3">
-                    <h2 class="center-align">New Student</h2>
+                    <h2 class="center-align">Edit Student</h2>
                     <div class="card horizontal">
                         <div class="card-stacked">
                             <div class="card-content">
                                 <form:form action="save" method="post" modelAttribute="student">
                                     <div class="row">
+                                        <div class="input-field col s12">
+                                            <form:input id="id" path="id" readonly="true"/>
+                                            <label for="id">ID</label>
+                                        </div>
                                         <div class="input-field col s6">
                                             <form:input id="first_name" path="firstName" />
                                             <label for="first_name">First Name</label>

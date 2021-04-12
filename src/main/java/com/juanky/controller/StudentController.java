@@ -20,7 +20,7 @@ public class StudentController {
     private StudentService service;
 
     @RequestMapping("/student")
-    public ModelAndView list() {
+    public ModelAndView listStudent() {
         List<Student> listStudent = service.list();
         ModelAndView mav = new ModelAndView("students");
         mav.addObject("listStudent", listStudent);
@@ -28,23 +28,29 @@ public class StudentController {
     }
 
     @RequestMapping("/student/new")
-    public String newForm(Map<String, Object> model) {
+    public String newStudent(Map<String, Object> model) {
         Student student = new Student();
         model.put("student", student);
         return "student_new";
     }
 
     @RequestMapping(value = "/student/save", method = RequestMethod.POST)
-    public String saveCustomer(@ModelAttribute("student") Student student) {
+    public String saveStudent(@ModelAttribute("student") Student student) {
         service.save(student);
         return "redirect:/student";
     }
 
     @RequestMapping("/student/edit")
-    public ModelAndView editCustomerForm(@RequestParam long id) {
-        ModelAndView mav = new ModelAndView("edit_student");
+    public ModelAndView editStudent(@RequestParam int id) {
+        ModelAndView mav = new ModelAndView("student_edit");
         Student student = service.get(id);
         mav.addObject("student", student);
         return mav;
+    }
+
+    @RequestMapping("/student/delete")
+    public String deleteStudent(@RequestParam int id) {
+        service.delete(id);
+        return "redirect:/student";
     }
 }

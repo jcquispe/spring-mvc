@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>New Student</title>
+        <title>Edit Class</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </head>
     <body>
@@ -23,19 +23,25 @@
         <div class="container">
             <div class="row">
                 <div class="col s6 offset-s3">
-                    <h2 class="center-align">New Student</h2>
+                    <h2 class="center-align">Edit Class</h2>
                     <div class="card horizontal">
                         <div class="card-stacked">
                             <div class="card-content">
-                                <form:form action="save" method="post" modelAttribute="student">
+                                <form:form action="save" method="post" modelAttribute="grade">
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <form:input id="first_name" path="firstName" />
-                                            <label for="first_name">First Name</label>
+                                            <form:input id="cod" path="cod" readonly="true"/>
+                                            <label for="cod">Cod</label>
                                         </div>
                                         <div class="input-field col s6">
-                                            <form:input id="last_name" path="lastName" />
-                                            <label for="last_name">Last Name</label>
+                                            <form:input id="title" path="title" />
+                                            <label for="title">Title</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <form:input id="description" path="description" />
+                                            <label for="description">Description</label>
                                         </div>
                                     </div>
                                     <div class="row center-align">

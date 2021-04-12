@@ -1,30 +1,37 @@
 package com.juanky.service;
 
 import com.juanky.model.Student;
+import com.juanky.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
 
-    final List<Student> students = new ArrayList<>();
+    @Autowired
+    private StudentRepository repo;
 
     public List<Student> list() {
-        if (students.size() == 0) {
-            students.add(new Student(1, "Juan", "Perez"));
-            students.add(new Student(2, "Carla", "Bernal"));
-        }
-        return students;
+        return repo.findAll();
     }
 
     public void save(Student student) {
-        student.setId(students.size() + 1);
-        students.add(student);
+        repo.save(student);
     }
 
     public Student get(Integer id) {
-        return students.stream().filter(s -> s.getId().equals(id)).findAny();
+        return repo.findById(id);
+    }
+
+    public void delete(Integer id) {
+        repo.deleteById(id);
+    }
+
+    public List<Student> search(String keyword) {
+        return repo.findByAny(keyword);
     }
 }
