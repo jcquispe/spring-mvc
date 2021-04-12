@@ -1,0 +1,13 @@
+com/juanky/repository/GradeRepository.class
+com/juanky/controller/AssignmentController.class
+com/juanky/repository/StudentRepository.class
+com/juanky/service/StudentService.class
+com/juanky/model/Student.class
+com/juanky/controller/GradeController.class
+com/juanky/HelloController.class
+com/juanky/model/Assignment.class
+com/juanky/model/Grade.class
+com/juanky/service/AssignmentService.class
+com/juanky/repository/AssignmentRepository.class
+com/juanky/service/GradeService.class
+com/juanky/controller/StudentController.class
