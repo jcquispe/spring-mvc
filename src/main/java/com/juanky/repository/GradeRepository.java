@@ -13,7 +13,8 @@ public class GradeRepository {
 
     public List<Grade> findAll() {
         if (grades.size() == 0) {
-            grades.add(new Grade("MAT100", "ALGEBRA", "Algebra básica"));
+            grades.add(new Grade("FIS100", "FISICA I", "Física básica"));
+            grades.add(new Grade("ALG100", "ALGEBRA I", "Algebrá lineal"));
             grades.add(new Grade("MAT101", "CALCULO I", "Límites, continuidad, susesiones y series"));
             grades.add(new Grade("MAT102", "CALCULO II", "Cáculo diferencia e integral"));
         }
@@ -46,5 +47,4 @@ public class GradeRepository {
     public void deleteById(String id) {
         grades.removeIf(cl -> cl.getCod().equals(id));
     }
-
 }

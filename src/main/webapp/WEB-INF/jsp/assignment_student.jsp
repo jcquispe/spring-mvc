@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Students</title>
+        <title>Classes by Student</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     </head>
@@ -15,36 +15,42 @@
             <div class="nav-wrapper teal">
                 <a href="#" class="brand-logo">DH</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="student">Students</a></li>
-                    <li><a href="class">Classes</a></li>
+                    <li><a href="../student">Students</a></li>
+                    <li><a href="../class">Classes</a></li>
                 </ul>
             </div>
         </nav>
         <div class="container">
-            <h2 class="center-align">Students Manager</h2>
-            <a class="waves-effect waves-light btn" href="student/new">New Student</a>
-            <table class="display" style="width:100%" id="students">
+            <h2 class="center-align">Student Assignments</h2>
+            <div class="row">
+                <div class="col s4 offset-s4">
+                    <div class="card horizontal">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>ID: ${student.id}</p>
+                                <p>FIRST NAME: ${student.firstName}</p>
+                                <p>LAST NAME: ${student.lastName}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="new?id=${student.id}" class="waves-effect waves-light btn">New Assignment</a>
+
+            <table class="display" style="width:100%" id="assignments">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Action</th>
+                        <th>Class code</th>
+                        <th>Class title</th>
+                        <th>Class description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${listStudent}" var="student">
+                    <c:forEach items="${grades}" var="grade">
                     <tr>
-                        <td>${student.id}</td>
-                        <td>${student.firstName}</td>
-                        <td>${student.lastName}</td>
-                        <td>
-                            <a class="waves-effect waves-light btn-small yellow darken-3" href="student/edit?id=${student.id}">Edit</a>
-                            &nbsp;&nbsp;&nbsp;
-                            <a class="waves-effect waves-light btn-small red darken-2" href="student/delete?id=${student.id}">Delete</a>
-                            &nbsp;&nbsp;&nbsp;
-                            <a class="waves-effect waves-light btn-small blue darken-1" href="assign/student?id=${student.id}">View Classes</a>
-                        </td>
+                        <td>${grade.cod}</td>
+                        <td>${grade.title}</td>
+                        <td>${grade.description}</td>
                     </tr>
                     </c:forEach>
                 </tbody>
@@ -55,7 +61,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#students').DataTable();
+                $('#assignments').DataTable();
             } );
         </script>
     </body>

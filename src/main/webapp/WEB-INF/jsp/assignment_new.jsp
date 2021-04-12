@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>New Student</title>
+        <title>New Assignment</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </head>
     <body>
@@ -22,19 +22,24 @@
         <div class="container">
             <div class="row">
                 <div class="col s6 offset-s3">
-                    <h2 class="center-align">New Student</h2>
+                    <h2 class="center-align">New Assignment</h2>
                     <div class="card horizontal">
                         <div class="card-stacked">
                             <div class="card-content">
-                                <form:form action="save" method="post" modelAttribute="student">
+                                <form:form action="save" method="post" modelAttribute="assignment">
                                     <div class="row">
-                                        <div class="input-field col s6">
-                                            <form:input id="first_name" path="firstName" />
-                                            <label for="first_name">First Name</label>
+                                        <form:hidden id="student_id" path="studentId" value="${student.id}"/>
+                                        <div class="col s6">
+                                            <p>ID: ${student.id}</p>
                                         </div>
-                                        <div class="input-field col s6">
-                                            <form:input id="last_name" path="lastName" />
-                                            <label for="last_name">Last Name</label>
+                                        <div class="col s6">
+                                            <p>Student: ${student.firstName} ${student.lastName}</p>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <form:select path="gradeCod">
+                                                <form:options items="${grades}" itemValue="cod" itemLabel="title"/>
+                                            </form:select>
+                                            <label>Class</label>
                                         </div>
                                     </div>
                                     <div class="row center-align">
@@ -47,6 +52,12 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('select').formSelect();
+              });
+        </script>
     </body>
 </html>

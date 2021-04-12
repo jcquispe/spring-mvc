@@ -17,7 +17,6 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="student">Students</a></li>
                     <li><a href="class">Classes</a></li>
-                    <li><a href="assignment">Assignments</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,9 +39,11 @@
                         <td>${grade.title}</td>
                         <td>${grade.description}</td>
                         <td>
-                            <a href="class/edit?id=${grade.cod}">Edit</a>
+                            <a class="waves-effect waves-light btn-small yellow darken-3" href="class/edit?id=${grade.cod}">Edit</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="class/delete?id=${grade.cod}">Delete</a>
+                            <a class="waves-effect waves-light btn-small red darken-2" href="class/delete?id=${grade.cod}">Delete</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a class="waves-effect waves-light btn-small blue darken-1" href="assign/grade?id=${grade.cod}">View Students</a>
                         </td>
                     </tr>
                     </c:forEach>

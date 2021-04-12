@@ -16,7 +16,6 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="../student">Students</a></li>
                     <li><a href="../class">Classes</a></li>
-                    <li><a href="../assignment">Assignments</a></li>
                 </ul>
             </div>
         </nav>

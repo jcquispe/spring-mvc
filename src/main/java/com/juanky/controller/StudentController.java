@@ -1,6 +1,8 @@
 package com.juanky.controller;
 
 import com.juanky.model.Student;
+import com.juanky.service.AssignmentService;
+import com.juanky.service.GradeService;
 import com.juanky.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ public class StudentController {
 
     @Autowired
     private StudentService service;
+    @Autowired
+    private AssignmentService assignmentService;
 
     @RequestMapping("/student")
     public ModelAndView listStudent() {
@@ -50,7 +54,17 @@ public class StudentController {
 
     @RequestMapping("/student/delete")
     public String deleteStudent(@RequestParam int id) {
+        assignmentService.deleteAssignmentByStudentId(id);
         service.delete(id);
+        return "redirect:/student";
+    }
+
+    @RequestMapping("/student/assign")
+    public String assignStudent(@RequestParam int id) {
+        ModelAndView mav = new ModelAndView("student_assign");
+        Student student = service.get(id);
+
+        mav.addObject("student", student);
         return "redirect:/student";
     }
 }

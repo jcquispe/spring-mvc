@@ -2,6 +2,7 @@ package com.juanky.controller;
 
 import com.juanky.model.Grade;
 import com.juanky.model.Student;
+import com.juanky.service.AssignmentService;
 import com.juanky.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class GradeController {
     @Autowired
     private GradeService service;
+    @Autowired
+    private AssignmentService assignmentService;
 
     @RequestMapping("/class")
     public ModelAndView listGrade() {
@@ -50,6 +53,7 @@ public class GradeController {
 
     @RequestMapping("/class/delete")
     public String deleteGrade(@RequestParam String id) {
+        assignmentService.deleteAssignmentByGradeId(id);
         service.delete(id);
         return "redirect:/class";
     }
